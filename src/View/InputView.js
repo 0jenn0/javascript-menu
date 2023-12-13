@@ -1,4 +1,5 @@
-import { Console } from "@woowacourse/mission-utils";
+const { Console } = require("@woowacourse/mission-utils");
+const SYMBOL = require("../Constant/Symbol.js");
 
 const InputView = {
   promptCoachNames: async () => {
@@ -18,4 +19,4 @@ const InputView = {
   },
 };
 
-export default InputView;
+module.exports = InputView;
