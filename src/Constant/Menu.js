@@ -56,4 +56,4 @@ const MENU = Object.freeze({
   ],
 });
 
-export default MENU;
+module.exports = MENU;

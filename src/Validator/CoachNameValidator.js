@@ -1,4 +1,4 @@
-import AppError from "../Error/AppError.js";
+const AppError = require("../Error/AppError.js");
 
 const CoachNameValidator = {
   checkNameLength(name) {
@@ -13,10 +13,19 @@ const CoachNameValidator = {
     }
   },
 
-  check(name) {
-    this.checkIsEmpty(name);
-    this.checkNameLength(name);
+  check(names) {
+    this.checkCoachesNumber(names);
+    names.forEach((name) => {
+      this.checkIsEmpty(name);
+      this.checkNameLength(name);
+    });
+  },
+
+  checkCoachesNumber(coaches) {
+    if (coaches.length < 2 || coaches.length > 5) {
+      throw new AppError("코치는 2명 이상 5명 이하로 입력해주세요.");
+    }
   },
 };
 
-export default CoachNameValidator;
+module.exports = CoachNameValidator;

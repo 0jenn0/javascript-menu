@@ -1,4 +1,5 @@
 const MENU = require("../Constant/Menu.js");
+const { Random } = require("@woowacourse/mission-utils");
 
 class Menu {
   static menu = MENU;
@@ -13,25 +14,40 @@ class Menu {
 
   static getRandomCategory() {
     const categories = Object.keys(this.menu);
-    const category = categories[Randoms.pickNumberInRange(1, 5) + 1];
+    const category = categories[Random.pickNumberInRange(1, 5) - 1];
 
     return category;
   }
 
-  static pickCategoriesWithLimit(limit = 2, picks = 5) {
-    const pickedCategories = {};
-    const result = [];
+  //   static pickRandomCategories() {
+  //     let categories = [];
+  //     while (categories.length < 5) {
+  //       const number = Random.pickNumberInRange(1, 5);
+  //       if (
+  //         categories.filter((_, index) => categories[index] === number).length <=
+  //         1
+  //       ) {
+  //         categories.push(Object.keys(Menu.menu)[number - 1]);
+  //         continue;
+  //       }
+  //     }
+  //     return categories;
+  //   }
+  static pickRandomCategories() {
+    let categories = [];
+    while (categories.length < 5) {
+      const number = Random.pickNumberInRange(1, 5);
+      const category = Object.keys(Menu.menu)[number - 1];
 
-    while (result.length < picks) {
-      const category = this.getRandomCategory();
-      pickedCategories[category] = (pickedCategories[category] || 0) + 1;
+      // 해당 카테고리의 현재 중복 개수를 확인
+      const duplicateCount = categories.filter((c) => c === category).length;
 
-      if (pickedCategories[category] <= limit) {
-        result.push(category);
+      // 중복 개수가 2 이하인 경우에만 추가
+      if (duplicateCount < 2) {
+        categories.push(category);
       }
     }
-
-    return result;
+    return categories;
   }
 }
 

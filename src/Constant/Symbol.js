@@ -5,3 +5,5 @@ const SYMBOL = Object.freeze({
   CLOSE_BRACKET: " ]",
   BLANK: " ",
 });
+
+module.exports = SYMBOL;

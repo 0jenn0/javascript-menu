@@ -1,14 +1,12 @@
 const { Console } = require("@woowacourse/mission-utils");
 
-const ErrorHandler = {
-  async retryOnErrors(executeFunction) {
-    try {
-      return await executeFunction();
-    } catch (error) {
-      Console.print(error.message);
-      return this.retryOnErrors(executeFunction);
-    }
-  },
+const ErrorHandler = async (asyncFn, context) => {
+  try {
+    return await asyncFn.call(context);
+  } catch (error) {
+    Console.print(error.message);
+    return ErrorHandler(asyncFn, context);
+  }
 };
 
 module.exports = ErrorHandler;
