@@ -1,4 +1,4 @@
-export default class AppError extends Error {
+class AppError extends Error {
   static PREFIX = "[ERROR]";
 
   constructor(message) {
@@ -6,3 +6,5 @@ export default class AppError extends Error {
     this.name = this.constructor.name;
   }
 }
+
+module.exports = AppError;
