@@ -1,4 +1,4 @@
-const Console = require("@woowacourse/mission-utils/dist/Console");
+const { Console } = require("@woowacourse/mission-utils");
 
 const ErrorHandler = {
   async retryOnErrors(executeFunction) {
