@@ -1,13 +1,15 @@
+import AppError from "../Error/AppError.js";
+
 const CoachNameValidator = {
   checkNameLength(name) {
     if (name.length < 2 || name.length > 4) {
-      throw new Error("코치 이름은 2글자 이상 4글자 이하입니다.");
+      throw new AppError("코치 이름은 2글자 이상 4글자 이하입니다.");
     }
   },
 
   checkIsEmpty(name) {
     if (name === "") {
-      throw new Error("코치 이름은 공백일 수 없습니다.");
+      throw new AppError("코치 이름은 공백일 수 없습니다.");
     }
   },
 
