@@ -13,3 +13,5 @@ const MENU = Object.freeze({
   아시안: SAMPLE.아시안.split(', '),
   양식: SAMPLE.양식.split(', '),
 });
+
+export default MENU;

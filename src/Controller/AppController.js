@@ -1,5 +1,6 @@
 import CoachValidator from '../Validator/CoachValidator.js';
 import CommonValidator from '../Validator/CommonValidator.js';
+import MenuValidator from '../Validator/MenuValidator.js';
 import { InputView, OutputView } from '../View/index.js';
 
 export default class AppController {
@@ -17,6 +18,8 @@ export default class AppController {
     let coachesWithRestrictedMenus = [];
     for (const coachName of coachNames) {
       const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
+      CommonValidator.checkExistSpace(restrictedMenus);
+      MenuValidator.check(restrictedMenus);
       coachesWithRestrictedMenus.push({ name: coachName, restrictedMenus: restrictedMenus });
     }
   }
