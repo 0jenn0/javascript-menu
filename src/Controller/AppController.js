@@ -1,3 +1,4 @@
+import Menu from '../Models/Menu.js';
 import CoachValidator from '../Validator/CoachValidator.js';
 import CommonValidator from '../Validator/CommonValidator.js';
 import MenuValidator from '../Validator/MenuValidator.js';
@@ -15,6 +16,7 @@ export default class AppController {
     CommonValidator.check(coachNames);
     CoachValidator.check(coachNames);
 
+    // 못먹는 메뉴 입력받기
     let coachesWithRestrictedMenus = [];
     for (const coachName of coachNames) {
       const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
@@ -22,5 +24,9 @@ export default class AppController {
       MenuValidator.check(restrictedMenus);
       coachesWithRestrictedMenus.push({ name: coachName, restrictedMenus: restrictedMenus });
     }
+
+    // 랜덤 카테고리뽑기
+    const categories = Menu.pickRandomCategories();
+    console.log('categories', categories);
   }
 }

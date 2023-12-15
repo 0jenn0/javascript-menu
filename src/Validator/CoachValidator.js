@@ -13,9 +13,17 @@ const CoachValidator = Object.freeze({
       }
     });
   },
+  checkDuplicate: (coaches) => {
+    const coachSet = new Set(coaches);
+
+    if (coachSet.size !== coaches.length) {
+      throw new AppError('코치 이름이 중복되었습니다.');
+    }
+  },
   check: (coaches) => {
     CoachValidator.checkCoachNums(coaches);
     CoachValidator.checkCoachNameLength(coaches);
+    CoachValidator.checkDuplicate(coaches);
   },
 });
 

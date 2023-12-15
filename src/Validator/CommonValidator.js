@@ -1,4 +1,4 @@
-import SYMBOLS from '../Constants/Symbols.js';
+import SYMBOLS from '../Constants/symbol.js';
 import AppError from '../Error/AppError.js';
 
 const CommonValidator = Object.freeze({
