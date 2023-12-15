@@ -1,5 +1,6 @@
 import Menu from '../Models/Menu.js';
 import { OutputView } from '../View/index.js';
+import ResultController from './ResultController.js';
 import SetupController from './SetupController.js';
 
 export default class AppController {
@@ -14,10 +15,6 @@ export default class AppController {
 
     const recommandResult = Menu.recommendMenus(coachesWithRestrictedMenus, categories);
 
-    OutputView.printRecommendation();
-    OutputView.printWeekdays();
-    OutputView.printCategories(categories);
-    OutputView.printRecommendMenus(recommandResult);
-    OutputView.printEndMessage();
+    ResultController.announceResult(categories, recommandResult);
   }
 }
