@@ -55,12 +55,14 @@ export default class Menu {
   }
 
   static getRecommendedMenuForCategory(category, restrictedMenus) {
-    while (true) {
+    const MAX_ATTEMPTS = 50; // 최대 시도 횟수를 설정
+    for (let attempts = 0; attempts < MAX_ATTEMPTS; attempts += 1) {
       const recommendedMenu = Menu.getRandomMenu(category);
       if (!restrictedMenus.includes(recommendedMenu)) {
         return recommendedMenu;
       }
     }
+    return null;
   }
 
   static recommendMenus(coachesWithRestrictedMenus, categories) {

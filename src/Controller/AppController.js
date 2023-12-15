@@ -1,7 +1,6 @@
 import Menu from '../Models/Menu.js';
 import { OutputView } from '../View/index.js';
-import ResultController from './ResultController.js';
-import SetupController from './SetupController.js';
+import { SetupController, ResultController } from './index.js';
 
 export default class AppController {
   static async start() {

@@ -10,17 +10,6 @@ export default class SetupController {
     return coachNames;
   }
 
-  // static async setupRestrictedMenus(coachNames) {
-  //   const coachesWithRestrictedMenus = [];
-  //   for (const coachName of coachNames) {
-  //     const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
-  //     CommonValidator.checkExistSpace(restrictedMenus);
-  //     MenuValidator.check(restrictedMenus);
-  //     coachesWithRestrictedMenus.push({ name: coachName, restrictedMenus });
-  //   }
-
-  //   return coachesWithRestrictedMenus;
-  // }
   static async setupRestrictedMenus(coachNames) {
     const restrictedMenusPromises = coachNames.map(async (coachName) => {
       const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
