@@ -65,4 +65,13 @@ export default class Menu {
       attempts++;
     }
   }
+
+  static recommendMenus(coachesWithRestrictedMenus, categories) {
+    const recommandResult = [];
+    coachesWithRestrictedMenus.forEach(({ name, restrictedMenus }) => {
+      const recommandedMenus = Menu.recommendMenu(categories, restrictedMenus);
+      recommandResult.push({ name, recommandedMenus });
+    });
+    return recommandResult;
+  }
 }

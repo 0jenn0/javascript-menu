@@ -2,8 +2,9 @@ const SYMBOLS = Object.freeze({
   emptyString: '',
   space: ' ',
   comma: ',',
-  openBracket: '[',
-  closeBracket: ']',
+  pipeWithSpaces: ' | ',
+  openBracket: '[ ',
+  closeBracket: ' ]',
 });
 
 export default SYMBOLS;

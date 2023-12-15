@@ -1,5 +1,4 @@
-// 앱 전반적으로 다 사용되는 상수들
-const AppConfig = Object.freeze({
+const CONSTANTS = Object.freeze({
   COACH_MIN_LENGTH: 2, // 코치 이름 최소 길이
   COACH_MAX_LENGTH: 4, // 코치 이름 최대 길이
   COACH_MIN_COUNT: 2, // 최소 코치 수
@@ -15,3 +14,5 @@ const AppConfig = Object.freeze({
   RESTRICTED_MENU_PROMPT: '(이)가 못 먹는 메뉴를 입력해 주세요.', // 못 먹는 메뉴 입력 메시지
   COACH_MIN_ERROR: '코치는 최소 2명 이상 입력해야 합니다.', // 최소 코치 수 에러 메시지
 });
+
+export default CONSTANTS;
