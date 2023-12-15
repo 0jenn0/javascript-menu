@@ -4,7 +4,7 @@ import ResultController from './ResultController.js';
 import SetupController from './SetupController.js';
 
 export default class AppController {
-  async start() {
+  static async start() {
     OutputView.printStartMessage();
 
     const coachNames = await SetupController.setupCoachNames();

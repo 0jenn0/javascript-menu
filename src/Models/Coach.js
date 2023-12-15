@@ -1,5 +1,6 @@
 export default class Coach {
   #name;
+
   #restrictedMenus;
 
   constructor(name, restrictedMenus) {

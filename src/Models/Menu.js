@@ -1,5 +1,6 @@
-import MENU from '../Constants/Menu.js';
 import { Random } from '@woowacourse/mission-utils';
+import MENU from '../Constants/menu.js';
+import CONSTANTS from '../Constants/constants.js';
 
 export default class Menu {
   static #menu = MENU;
@@ -14,20 +15,20 @@ export default class Menu {
 
   static pickRandomCategory() {
     const categories = Menu.getCategories();
-    const randomIndex = categories[Random.pickNumberInRange(0, 4)];
+    const randomIndex = Random.pickNumberInRange(1, CONSTANTS.WEEKDAYS.length);
 
-    return categories[randomIndex];
+    return categories[randomIndex - 1];
   }
 
   static pickRandomIndexes() {
     const counts = {};
     const result = [];
 
-    while (result.length < 5) {
-      const number = Random.pickNumberInRange(1, 5);
+    while (result.length < CONSTANTS.WEEKDAYS.length) {
+      const number = Random.pickNumberInRange(1, CONSTANTS.WEEKDAYS.length);
       counts[number] = (counts[number] || 0) + 1;
 
-      if (counts[number] <= 2) {
+      if (counts[number] <= CONSTANTS.MAX_CATEGORY_OCCURRENCE) {
         result.push(number);
       }
     }
@@ -54,15 +55,11 @@ export default class Menu {
   }
 
   static getRecommendedMenuForCategory(category, restrictedMenus) {
-    const MAX_ATTEMPTS = 10;
-    let attempts = 0;
-
-    while (attempts < MAX_ATTEMPTS) {
+    while (true) {
       const recommendedMenu = Menu.getRandomMenu(category);
       if (!restrictedMenus.includes(recommendedMenu)) {
         return recommendedMenu;
       }
-      attempts++;
     }
   }
 

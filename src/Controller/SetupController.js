@@ -1,7 +1,5 @@
-import CoachValidator from '../Validator/CoachValidator.js';
-import CommonValidator from '../Validator/CommonValidator.js';
-import MenuValidator from '../Validator/MenuValidator.js';
 import { InputView } from '../View/index.js';
+import { CoachValidator, CommonValidator, MenuValidator } from '../Validator/index.js';
 
 export default class SetupController {
   static async setupCoachNames() {
@@ -12,15 +10,26 @@ export default class SetupController {
     return coachNames;
   }
 
+  // static async setupRestrictedMenus(coachNames) {
+  //   const coachesWithRestrictedMenus = [];
+  //   for (const coachName of coachNames) {
+  //     const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
+  //     CommonValidator.checkExistSpace(restrictedMenus);
+  //     MenuValidator.check(restrictedMenus);
+  //     coachesWithRestrictedMenus.push({ name: coachName, restrictedMenus });
+  //   }
+
+  //   return coachesWithRestrictedMenus;
+  // }
   static async setupRestrictedMenus(coachNames) {
-    let coachesWithRestrictedMenus = [];
-    for (const coachName of coachNames) {
+    const restrictedMenusPromises = coachNames.map(async (coachName) => {
       const restrictedMenus = await InputView.promptRestrictedMenu(coachName);
       CommonValidator.checkExistSpace(restrictedMenus);
       MenuValidator.check(restrictedMenus);
-      coachesWithRestrictedMenus.push({ name: coachName, restrictedMenus: restrictedMenus });
-    }
+      return { name: coachName, restrictedMenus };
+    });
 
+    const coachesWithRestrictedMenus = await Promise.all(restrictedMenusPromises);
     return coachesWithRestrictedMenus;
   }
 }

@@ -24,9 +24,8 @@ const OutputView = Object.freeze({
     Console.print(`\n추천을 완료했습니다.`);
   },
 
-  createHeader: (contents) => {
-    return `${SYMBOLS.openBracket}${contents.join(SYMBOLS.pipeWithSpaces)}${SYMBOLS.closeBracket}`;
-  },
+  createHeader: (contents) =>
+    `${SYMBOLS.openBracket}${contents.join(SYMBOLS.pipeWithSpaces)}${SYMBOLS.closeBracket}`,
 });
 
 export default OutputView;

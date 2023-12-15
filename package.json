@@ -11,18 +11,15 @@
     "@babel/core": "^7.23.0",
     "@babel/preset-env": "^7.22.20",
     "babel-jest": "^29.7.0",
-    "jest": "29.6.0"
+    "jest": "^29.6.0"
   },
   "scripts": {
     "test": "jest --detectOpenHandles"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/woowacourse-precourse/javascript-menu.git"
-  },
   "keywords": [],
   "author": "woowacourse",
   "license": "MIT",
+  "engineStrict": true,
   "jest": {
     "transform": {
       "\\.js$": "babel-jest"
@@ -33,11 +30,6 @@
       "@babel/preset-env"
     ]
   },
-  "bugs": {
-    "url": "https://github.com/woowacourse-precourse/javascript-menu/issues"
-  },
-  "homepage": "https://github.com/woowacourse-precourse/javascript-menu#readme",
-  "engineStrict": true,
   "engines": {
     "npm": ">=9.6.7",
     "node": ">=18.17.1"

@@ -4,12 +4,8 @@
     "node": true,
     "jest": true
   },
-  "extends": [
-    "airbnb-base",
-    "prettier",
-    "plugin:jsdoc/recommended",
-    "plugin:jest/recommended"
-  ],
+  "extends": ["airbnb-base", "prettier"],
+
   "overrides": [
     {
       "files": ["*.test.js", "ApplicationTest.js"],
@@ -28,5 +24,6 @@
     "import/extensions": ["off"],
     "max-depth": ["error", 2],
     "max-lines-per-function": ["error", { "max": 15 }]
+    // "class-methods-use-this": "off"
   }
 }
